@@ -1,0 +1,64 @@
+{% extends 'layout.html' %} 
+
+{%block body%}
+
+{% with messages = get_flashed_messages() %} {% if messages%} {% for
+  message in messages %}
+  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button
+      type="button"
+      class="close"
+      data-dismiss="alert"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  {%endfor%} {%endif %} {%endwith%}
+
+
+
+
+    <form action="/adminlogin" method="POST">
+        <div class="form-row align-items-center">
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Administrador</label>
+            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Nombre de usuario" name = 'username'>
+          </div>
+
+          <div class="col-auto">
+
+            <label class="sr-only" for="inlineFormInputGroup">Contraseña</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Contraseña</div>
+              </div>
+              <input type="password" class="form-control" id="inlineFormInputGroup" placeholder="Contraseña" name = 'password'>
+            </div>
+          </div>
+
+          <div class="col-auto">
+
+            <label class="sr-only" for="inlineFormInputGroup">Clave especial</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Clave especial</div>
+              </div>
+              <input type="password" class="form-control" id="special_key" placeholder="clave especial" name = "special_key">
+            </div>
+          </div>
+
+
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">Entrar Como Administrador</button>
+            <a href="/adminsignup" class="btn btn-dark mb-2">Registrar un nuevo Administrador</a>
+          </div>
+        </div>
+      </form>
+
+
+
+      
+{%endblock%}

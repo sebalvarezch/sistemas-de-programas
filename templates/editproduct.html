@@ -1,0 +1,37 @@
+{% extends 'layout.html'%}
+{%block body%}
+
+  
+<form action="/edit/{{id}}" method="POST">
+    
+<div class="col-md7">
+    <table class="table table-striped table-botdered bg-white table-sm">
+      <thead>
+        <tr>
+          <td><h4>Foto</h4></td>
+          <td><h4>Modelo</h4></td>
+          <td><h4>Marca</h4></td>
+          <td><h4>Precio</h4></td>
+          <td><h4>Stock</h4></td>
+        </tr>
+      </thead>
+  
+      <tbody>
+        
+        <tr>
+          <td><input type= "url" name="photo" id="photo" value="{{data.0.0}}"></td>
+          <td><h5 class="card-title"><input type="text" name="model" id="model" value="{{data.0.1}}"></h5></td>
+          <td><h5><input type="text" name="brand" id="brand" value="{{data.0.2}}"></h5></td>
+          <td id="precio"><h5><input type="number" min = '1' name="price" id="price" value="{{data.0.3}}"></h5></td> 
+          <td><h5><input type="number" min = '1' name="stock" id="stock" value="{{data.0.4}}"></h5></td>
+        </tr>    
+      </tbody>
+    </table>
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg">Editar</button>
+  
+</form>
+
+  
+
+{%endblock%}

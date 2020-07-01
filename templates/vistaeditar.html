@@ -1,0 +1,351 @@
+{% extends 'layout.html'%}
+{%block body%}
+    
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ 
+    
+<!--  1 -->
+
+<div class="nav-item">
+ 
+      <form>
+        <a class = "btn btn-success btn-block" href="/verclientes">Ver Clientes</a>
+        
+      </form>
+
+  </div>
+
+  <div class="nav-item">
+   
+        <form action="/profile" method="POST">
+            <a href = "/gestionar"  class = "btn btn-dark btn-block">Gestionar vendedores</a>
+        </form>
+   
+    </div>
+ 
+   
+    <div class="nav-item">
+       
+            <form action="/profile" method="POST">
+              <a href = "/facturas"  class = "btn btn-info btn-block">Facturas</a>
+            </form>
+
+        </div>
+
+
+        <div class="nav-item">
+      
+            <form action="/profile" method="POST">
+                <input type ="submit" name = 'log_out' value = 'salir' class = "btn btn-danger btn-block"></input>
+            </form>
+  
+        </div>
+      </ul>
+    </div>
+  </nav>  
+
+  {% with messages = get_flashed_messages() %} {% if messages%} {% for
+    message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{message}}</strong>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {%endfor%} {%endif %} {%endwith%}
+
+
+
+  <nav><p></p></nav>
+
+<!--Franelas-->
+<div class="row row-cols-1 row-cols-md-4">
+
+    <div class="col mb-2">
+      <div class="card text-white bg-dark mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Franelas</h5></td>
+  
+            <form action="/edit/franelas" method="POST">
+            
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-dark" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-danger mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Camisas</h5></td>
+  
+            <form action="/edit/camisas" method="POST">
+            
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-danger" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+  <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-info mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Hoddies</h5></td>
+  
+            <form action="/edit/hoddies" method="POST">
+              
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-info" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+  <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-warning mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Chaquetas</h5></td>
+  
+            <form action="/edit/chaquetas" method="POST">
+             
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-warning" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+    <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-primary mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Pantalones</h5></td>
+  
+            <form action="/edit/pantalones" method="POST">
+           
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-primary" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+    <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-success mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Shorts</h5></td>
+  
+            <form action="/edit/shorts" method="POST">
+             
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-success" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+    <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-secondary mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Traje</h5></td>
+  
+            <form action="/edit/traje" method="POST">
+             
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-secondary " placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-dark mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Vestido</h5></td>
+  
+            <form action="/edit/vestido" method="POST">
+              
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-dark" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-danger mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Blusa</h5></td>
+  
+            <form action="/edit/blusa" method="POST">
+             
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-danger" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+  <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-info mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Falda</h5></td>
+  
+            <form action="/edit/falda" method="POST">
+             
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-info" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+  <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-warning mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Blazer</h5></td>
+  
+            <form action="/edit/blazer" method="POST">  
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-warning" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+    <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-primary mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Edredon</h5></td>
+  
+            <form action="/edit/edredon" method="POST">
+           
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-primary" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+    <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-success mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Sabana</h5></td>
+  
+            <form action="/edit/sabana" method="POST">
+              
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-success" placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+    <!--Franelas-->
+  
+    <div class="col mb-2">
+      <div class="card text-white bg-secondary mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+        <div class="card-body">
+          <tr>
+            <td><h5 class="card-title">Almohada</h5></td>
+  
+            <form action="/edit/almohada" method="POST">
+             
+              <td><p></p></td>
+              <td> <button type= "submit" class="btn btn-secondary " placeholder = "Añadir al carrito"><h5>Editar</h5></button></td>
+            </form>
+          </tr>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+  <!-- Div que cierra las tarjetas-->
+  </div>
+    </div>
+  
+
+
+
+
+
+
+
+
+
+
+  {%endblock%}

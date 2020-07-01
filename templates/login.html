@@ -1,0 +1,60 @@
+{% extends 'layout.html' %} 
+
+{%block body%}
+
+{% with messages = get_flashed_messages() %} {% if messages%} {% for
+  message in messages %}
+  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button
+      type="button"
+      class="close"
+      data-dismiss="alert"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  {%endfor%} {%endif %} {%endwith%}
+
+
+
+    <form action="/login" method="POST">
+        <div class="form-row align-items-center">
+          <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Nombre de usuario</label>
+            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Nombre de usuario" name = 'username'>
+          </div>
+          <div class="col-auto">
+
+            <label class="sr-only" for="inlineFormInputGroup">Contraseña</label>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Contraseña</div>
+              </div>
+              <input type="password" class="form-control" id="inlineFormInputGroup" placeholder="Contraseña" name = 'password'>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+              <label class="form-check-label" for="autoSizingCheck">
+                Recuerdame
+              </label>
+            </div>
+          </div>
+
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">Entrar</button>
+            <a class="btn btn-danger mb-2" href="/signup">Registrarse</a>
+
+            <a class="btn btn-info mb-2" href="/adminlogin"> Administrar</a>
+          </div>
+        </div>
+      </form>
+
+
+
+      
+{%endblock%}

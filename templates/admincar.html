@@ -1,0 +1,78 @@
+{% extends 'layout.html'%}
+{%block body%}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <form action="/carsearch" method="POST" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" name = "search" id ="search" type="text" placeholder="Buscar...">
+      <button class="btn btn-info my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+</nav>
+
+{% with messages = get_flashed_messages() %} {% if messages%} {% for
+  message in messages %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button
+      type="button"
+      class="close"
+      data-dismiss="alert"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {%endfor%} {%endif %} {%endwith%}
+
+
+
+
+<form action="/checkout" method="POST">
+<div class="col-md7">
+  <table class="table table-striped table-botdered bg-white table-sm">
+    <thead>
+      <tr>
+        <td><h4>Foto</h4></td>
+        <td><h4>Modelo</h4></td>
+        <td><h4>Marca</h4></td>
+        <td><h4>Precio</h4></td>
+        <td><h4>Cantidad</h4></td>
+        <td><h4>Estado</h4></td>
+        <td><h4>idusuario</h4></td>
+        <td><h4>Operaciones</h4></td>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for ca in car %}
+      <tr>
+        <td>  <img src= "{{ca.4}}"  width="50" height="50"> </td>
+        <td><h5 class="card-title">{{ca.1}}</h5></td>
+        <td><h5>{{ca.2}}</h5></td>
+        <td id="precio"><h5>{{ca.3}}$</h5></td> 
+        <td><h5>{{ca.11}}</h5></td>
+        <td><h5>{{ca.12}}</h5></td>
+        <td><h5>{{ca.10}}</h5></td>
+
+        {% if ca.12 == 1 %}
+        <td><h5><a href="/admincardelete/{{ca.0}}" class="btn btn-danger">Eliminar</a></h5></td>
+        {% endif %}
+
+        {% if ca.12 == 0 %}
+        <td> <a href="/adminrecovercar/{{ca.0}}" class= "btn btn-outline-success">Recuperar</a></td>
+        {% endif %}
+
+      </tr>    
+      {% endfor %}
+      <td><h4>Monto:</h4></td>
+      <td><h4>{{total}}$ </h4></td>
+      <td><h4>IVA </h4></td>
+      <td><h4>{{iva}}$</h4></td>
+      <td><h4>total:</h4></td>
+      <td><h4>{{totaliva}}$</h4></td>
+    </tbody>
+  </table>
+</div>
+
+</form>
+
+{%endblock%}

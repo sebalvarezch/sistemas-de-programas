@@ -1,0 +1,67 @@
+{% extends 'layout.html'%}
+{%block body%}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ 
+    
+    <!--  1 -->
+    
+    <div class="nav-item">
+     
+          <form>
+            <a class = "btn btn-success btn-block" href="/verclientes">Ver Clientes</a>
+            
+          </form>
+    
+      </div>
+    
+      <div class="nav-item">
+       
+            <form action="/profile" method="POST">
+                <a href = "/gestionar"  class = "btn btn-dark btn-block">Gestionar vendedores</a>
+            </form>
+       
+        </div>
+     
+          <div class="nav-item">
+           
+                <form action="/profile" method="POST">
+                  <a href = "/facturas"  class = "btn btn-info btn-block">Facturas</a>
+                </form>
+    
+            </div>
+    
+    
+            <div class="nav-item">
+          
+                <form action="/profile" method="POST">
+                    <input type ="submit" name = 'log_out' value = 'salir' class = "btn btn-danger btn-block"></input>
+                </form>
+      
+            </div>
+          </ul>
+        </div>
+      </nav>  
+    
+
+      <nav><p></p></nav>
+
+      <h3>{{producto.0.1}}</h3>
+      <p></p>
+
+<form action="/update/{{name}}" method = "post">
+
+    <label for="producto"><h4>Precio</h4></label>
+    <input type="text" name = "precio" placeholder="{{producto.0.2}}" value = "{{producto.0.2}}">
+    
+    <label for="producto"><h4>Hash</h4></label>
+    <input type="text" name = "hash" placeholder="{{producto.0.4}}" value = "{{producto.0.4}}">
+    
+    <button type = "submit" class = "btn btn-success">
+        Editar
+</button>
+
+</form>
+
+{%endblock%}

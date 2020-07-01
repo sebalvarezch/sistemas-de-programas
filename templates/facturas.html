@@ -1,0 +1,91 @@
+{% extends 'layout.html'%}
+{%block body%}
+    
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ 
+    
+<!--  1 -->
+
+<div class="nav-item">
+ 
+      <form>
+        <a class = "btn btn-success btn-block" href="/verclientes">Ver Clientes</a>
+        
+      </form>
+
+  </div>
+
+  <div class="nav-item">
+   
+        <form action="/profile" method="POST">
+            <a href = "/gestionar"  class = "btn btn-dark btn-block">Gestionar vendedores</a>
+        </form>
+   
+    </div>
+ 
+    <div class="nav-item">
+    
+          <form action="/profile" method="POST">
+              <a href = "/vistaeditar"  class = "btn btn-warning btn-block">Editar Productos</a>
+          </form>
+    
+      </div>
+
+
+        <div class="nav-item">
+      
+            <form action="/profile" method="POST">
+                <input type ="submit" name = 'log_out' value = 'salir' class = "btn btn-danger btn-block"></input>
+            </form>
+  
+        </div>
+      </ul>
+    </div>
+  </nav>  
+
+
+
+
+  
+  <div class="col-md7">
+    <table class="table table-striped table-botdered bg-white table-sm">
+      <thead>
+        <tr>
+          <td><h3>Hash</h3></td>
+          <td><h3>Fecha expedicion</h3></td>
+          <td><h3>Fecha vencimiento</h3></td>
+          <td><h3>Nombre del cliente</h3></td>
+          <td><h3>Monto</h3></td>
+          <td><h3>Operaciones</h3></td>
+        </tr>
+      </thead>
+      
+  {% for i in f %}
+      <tbody>       
+        <tr>
+          <td><h5>{{i.4}}</h5></td>
+          <td><h5>{{i.1}}</h5></td>
+          <td><h5>{{i.2}}</h5></td>
+          <td><h5>{{i.5}}</h5></td>
+          <td><h5>{{i.3}}$</h5></td>
+
+          {% if i.7 == 0 %}
+          <td><h5><a href="/devolution/{{i.4}}" class="btn btn-danger">Reembolsar</a></h5></td>
+          {% endif %}
+  
+          {% if i.7 == 1 %}
+          <td> <a href="/devolution/{{i.4}}" class= "btn btn-outline-success">Reembolsada</a></td>
+          {% endif %}
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>  
+    <table  class="table table-striped table-botdered bg-white table-sm">
+  
+  </table> 
+  
+  </div>
+  
+
+  {%endblock%}

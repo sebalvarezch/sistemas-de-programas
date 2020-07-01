@@ -1,0 +1,650 @@
+{% extends 'layout.html'%}
+{%block body%}
+    
+
+
+  </nav>  
+
+  <p></p>
+  <p></p>
+
+
+
+<style>
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+}
+
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#sidebar {
+    /* don't forget to add all the previously mentioned styles here too */
+    background: #bbb6b6;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background:  #bbb6b6;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid  #bbb6b6;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color:  #bbb6b6;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background:  #bbb6b6;
+}
+
+
+</style>
+
+
+
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Caja</h3>
+        </div>
+
+          <table class="table table-striped table-botdered bg-white table-sm">
+            <thead>
+              <tr>
+                <td>Item</td>
+                <td>Precio</td>
+                <td>Ca</td>
+                <td>opciones</td>
+              </tr>
+            </thead>
+            
+        {% for i in items %}
+            <tbody>       
+              <tr>
+                <td>{{i.0}}</td>
+                <td>{{i.1}}</td>
+                <td>{{i.2}}</td>
+                <td><a href="/delete/{{i.0}}" class="btn btn-danger">Quitar</a></td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>  
+          <table  class="table table-striped table-botdered bg-white table-sm">
+
+            <thead>
+              <tr>
+                <td>Monto</td>
+                <td>IVA</td>
+                <td>Total</td>
+              </tr>
+            </thead>
+            <tbody>       
+              <tr>
+          <td><h6>{{neto}}$ </h6></td>
+          <td><h6>{{iva}}$ </h6></td>
+          <td><h6>{{totaliva}}$</h6></td>
+          </tr>
+        </table> 
+
+
+        <form action="/checkout" method="POST">
+        <h5>Datos del cliente</h5>
+      
+<div class = 'nav-item'>
+  <input type="text"  id = "fullname" name ="fullname"  placeholder ="nombre completo">
+</div>
+
+
+<div class = 'nav-item'>
+  <input type="number" min="0" id = "cedula" name = "cedula" placeholder ="cedula">
+</div>
+
+
+<div class = 'nav-item'>
+  <input type="text"  id = "address" name = "address"  placeholder="Direccion">
+</div>
+
+<div class = 'nav-item'>
+  <input type="number" min="0" id = "telefono" name = "telefono" placeholder ="telefono">
+</div>
+
+
+<!-- Botones para la accion --> 
+          <button type ="submit" class="btn btn-success" >Procesar</button>
+        </form>
+          <a href="/delete2/" class="btn btn-danger">Eliminar</a>
+
+
+
+</nav>
+
+
+
+
+<!-- Page Content -->
+<div id="content">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+
+        
+      </div>
+  </nav>
+</div>
+    </nav>
+ 
+ 
+ 
+    <!-- Page Content -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">       
+            </div>
+        </nav>
+    </div>
+
+
+
+
+<!--Franelas-->
+<div class="row row-cols-1 row-cols-md-4">
+
+  <div class="col mb-2">
+    <div class="card text-white bg-dark mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Franelas</h5></td>
+
+          <form action="/addtocar/franelas" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-dark" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+
+<!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-danger mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Camisas</h5></td>
+
+          <form action="/addtocar/camisas" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-danger" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+<!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-info mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Hoddies</h5></td>
+
+          <form action="/addtocar/hoddies" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-info" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+<!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-warning mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Chaquetas</h5></td>
+
+          <form action="/addtocar/chaquetas" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-warning" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-primary mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Pantalones</h5></td>
+
+          <form action="/addtocar/pantalones" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-primary" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+  <!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-success mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Shorts</h5></td>
+
+          <form action="/addtocar/shorts" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-success" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-secondary mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Traje</h5></td>
+
+          <form action="/addtocar/traje" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-secondary " placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <div class="col mb-2">
+    <div class="card text-white bg-dark mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Vestido</h5></td>
+
+          <form action="/addtocar/vestido" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-dark" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+
+<!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-danger mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Blusa</h5></td>
+
+          <form action="/addtocar/blusa" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-danger" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+<!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-info mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Falda</h5></td>
+
+          <form action="/addtocar/falda" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-info" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+<!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-warning mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Blazer</h5></td>
+
+          <form action="/addtocar/blazer" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-warning" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-primary mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Edredon</h5></td>
+
+          <form action="/addtocar/edredon" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-primary" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+  <!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-success mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Sabana</h5></td>
+
+          <form action="/addtocar/sabana" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-success" placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+  <!--Franelas-->
+
+  <div class="col mb-2">
+    <div class="card text-white bg-secondary mb-3" style="max-width: 10rem;" style="max-height: 10rem;">
+      <div class="card-body">
+        <tr>
+          <td><h5 class="card-title">Almohada</h5></td>
+
+          <form action="/addtocar/almohada" method="POST">
+            <td><h5><input class = "d-inline-flex p-1" type="number" name="quantity" min="1" max= "99" placeholder="0"></h5></td>
+            <td><p></p></td>
+            <td> <button type= "submit" class="btn btn-secondary " placeholder = "Añadir al carrito"><h5>Anadir</h5></button></td>
+          </form>
+        </tr>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Div que cierra las tarjetas-->
+</div>
+  </div>
+
+
+
+  <div class="nav-item">
+    <form action="/profile" method="POST">
+        <input type ="submit" name = 'log_out' value = 'salir' class = "btn btn-danger btn-block"></input>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+<!-- Footer -->
+<footer class="page-footer font-small mdb-color lighten-3 pt-4">
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
+
+        <!-- Content -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Tintoreria</h5>
+        <p>cbjhasdfihncnsiojfioajmlasdcfamoclfmkasdjl</p>
+        <p>bdjkn gfgjolmsvjlkmsdgjlsdfc,gjeriovmklsck,lmgjeriovklse,csldk</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Acerca de</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <a href="#!">PROJECTOS</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">NOSOTROS</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">BLOG</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="#!">RECONOCIMIENTOS</a>
+            </p>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+
+        <!-- Contact details -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Direccion</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>
+              <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+          </li>
+          <li>
+            <p>
+              <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+
+        <!-- Social buttons -->
+        <h5 class="font-weight-bold text-uppercase mb-4">Siguenos</h5>
+
+        <!-- Facebook -->
+        <a type="button" class="btn-floating btn-fb">
+          <i class="fab fa-facebook-f">
+            <img src= "https://i.postimg.cc/WbtZSWgz/facebook-icon.png" alt="" height="35" width="35">
+          </i>
+        </a>
+        <!-- Twitter -->
+        <a type="button" class="btn-floating btn-tw">
+          <i class="fab fa-twitter">
+            <img src= "https://i.postimg.cc/pXBf1h1c/twitter-squared1.png" alt="" height="50" width="50">
+          </i>
+        </a>
+        <!-- Google +-->
+        <a type="button" class="btn-floating btn-gplus">
+          <i class="fab fa-google-plus-g">
+            <img src= "https://i.postimg.cc/TPyG4bQr/instagram-icon.jpg" alt="" height="50" width="50">
+          </i>
+        </a>
+        <!-- Dribbble -->
+        <a type="button" class="btn-floating btn-dribbble">
+          <i class="fab fa-dribbble"></i>
+        </a>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://mdbootstrap.com/"> marcimusicstore.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+
+{%endblock%}
+
